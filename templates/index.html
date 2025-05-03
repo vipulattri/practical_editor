@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Java Practical Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#0A0A0A] min-h-screen flex items-center justify-center p-4">
+    <div class="container max-w-md">
+        <!-- Header Animation Container -->
+        <div class="header-container mb-8">
+            <h1 class="text-4xl font-bold text-white text-center mb-2 opacity-0">Advanced Java</h1>
+            <h2 class="text-2xl font-semibold text-[#7C3AED] text-center mb-6 opacity-0">Practical Editor</h2>
+        </div>
+
+        <!-- Main Card -->
+        <div class="bg-[#1A1A1A] rounded-xl p-6 shadow-xl border border-[#333] transform hover:scale-[1.02] transition-transform duration-300 opacity-0" id="mainCard">
+            <form action="/process" method="post" class="space-y-6">
+                <!-- Name Input Group -->
+                <div class="space-y-2">
+                    <label for="name" class="block text-sm font-medium text-gray-200">Enter Name</label>
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required
+                            class="w-full px-4 py-2 bg-[#2A2A2A] border border-[#404040] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                            placeholder="Enter your name"
+                        >
+                    </div>
+                </div>
+
+                <!-- Roll Number Input Group -->
+                <div class="space-y-2">
+                    <label for="roll_no" class="block text-sm font-medium text-gray-200">Enter Roll Number</label>
+                    <div class="input-container">
+                        <input 
+                            type="text" 
+                            id="roll_no" 
+                            name="roll_no" 
+                            required
+                            class="w-full px-4 py-2 bg-[#2A2A2A] border border-[#404040] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:border-transparent text-white placeholder-gray-400 transition-all duration-300"
+                            placeholder="Enter your roll number"
+                        >
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit"
+                    class="w-full bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#7C3AED] focus:ring-opacity-50"
+                >
+                    Download Modified Document
+                </button>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center text-gray-400 text-sm opacity-0" id="footer">
+            <p>Department of Computer Science & Engineering</p>
+        </div>
+    </div>
+
+    <script>
+        // GSAP Animations
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // Header animations
+            gsap.to("h1", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+
+            gsap.to("h2", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.2,
+                ease: "power3.out"
+            });
+
+            // Main card animation
+            gsap.to("#mainCard", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.4,
+                ease: "power3.out"
+            });
+
+            // Footer animation
+            gsap.to("#footer", {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.6,
+                ease: "power3.out"
+            });
+
+            // Input field animations
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    gsap.to(input, {
+                        scale: 1.02,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+
+                input.addEventListener('blur', () => {
+                    gsap.to(input, {
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
